@@ -118,7 +118,6 @@ class _MqttHomeState extends State<MqttHome> {
                   subdomains: ['a', 'b', 'c'],
                   // الخاصية المطلوبة في الإصدار 5
                   userAgentPackageName: 'com.example.app',
-
                 ),
                 PolylineLayer(
                   polylines: [
@@ -132,6 +131,16 @@ class _MqttHomeState extends State<MqttHome> {
                 MarkerLayer(
                   markers: _route.isNotEmpty
                       ? [
+                    Marker(
+                      point: _route.last,
+                      width: 80,
+                      height: 80,
+                      child: Icon(
+                        Icons.location_on,
+                        color: Colors.red,
+                        size: 40,
+                      ),
+                    ),
 
                   ]
                       : [],
@@ -154,7 +163,8 @@ class _MqttHomeState extends State<MqttHome> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: ListTile(
-                    leading: Icon(Icons.navigation, color: Colors.deepPurple),
+                    leading:
+                    Icon(Icons.navigation, color: Colors.deepPurple),
                     title: Text(
                       "Lat: ${trip['lat']}\nLng: ${trip['lng']}",
                       style: TextStyle(fontSize: 16),
@@ -238,7 +248,8 @@ class MqttService {
     client.subscribe(topic, MqttQos.atMostOnce);
     client.updates!.listen((List<MqttReceivedMessage<MqttMessage>> events) {
       final recMess = events[0].payload as MqttPublishMessage;
-      final pt = MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
+      final pt =
+      MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
       print('📩 رسالة جديدة من $topic: $pt');
       onMessageReceived(pt);
     });
