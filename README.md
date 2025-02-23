@@ -37,4 +37,5 @@
 1. **استنساخ المستودعات:**
    ```bash
    git clone https://github.com/Al-Nahari/wjhati_django.git
-   git clone https://github.c
+   git clone  https://github.com/Al-Nahari/Wjhati-IOT.git
+   git clone  https://github.com/Al-Nahari/wjhati_client.git
